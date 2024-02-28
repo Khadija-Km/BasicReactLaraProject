@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mission extends Model
+class Ville extends Model
 {
     use HasFactory;
-    protected $fillable = ['date','titreMission','benificiaire','service','destination','immatriculation'];
+    protected $fillable = ['NomVille','Region'];
 }

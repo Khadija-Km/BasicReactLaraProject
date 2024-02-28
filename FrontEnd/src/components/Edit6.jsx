@@ -13,6 +13,7 @@ function Edit6() {
     const[nomgarage,SetNomgarage]=useState("");
     const[Adresse,SetAdresse]=useState("");
     const[Telephone,SetTelephone]=useState("");
+    const[automobile,SetAutomobile]=useState("");
     const[immatriculation,SetImmatriculation]=useState("");
     useEffect(()=>{
         fetchMaintenace();
@@ -21,7 +22,7 @@ function Edit6() {
         await axios.get('http://localhost:8000/api/Maintenances/'+id)
         .then((data)=>{
             console.log(data)
-            const {typemaintenance,montant,date,ngarage,nomgarage,Adresse,Telephone,immatriculation}=data.data.Maintenance
+            const {typemaintenance,montant,date,ngarage,nomgarage,Adresse,Telephone,automobile,immatriculation}=data.data.Maintenance
             SetTypemaintenance(typemaintenance)
             SetMontant(montant)
             SetDate(date)
@@ -29,6 +30,7 @@ function Edit6() {
             SetNomgarage(nomgarage)
             SetAdresse(Adresse)
             SetTelephone(Telephone)
+            SetAutomobile(automobile)
             SetImmatriculation(immatriculation)
         }).catch(({response:data})=>{
             console.log(data.message)
@@ -45,6 +47,7 @@ function Edit6() {
         formData.append('nomgarage',nomgarage)
         formData.append('Adresse',Adresse)
         formData.append('Telephone',Telephone)
+        formData.append('automobile',automobile)
         formData.append('immatriculation',immatriculation)
         await axios.post('http://127.0.0.1:8000/api/Maintenances/'+id,formData)
         .then(({data})=>{
@@ -149,6 +152,18 @@ function Edit6() {
                 name='Telephone'
                 onChange={(e)=>{SetTelephone(e.target.value)}}
                 type="tel"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Automobile:
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                defaultValue={automobile}
+                name='automobile'
+                onChange={(e)=>{SetAutomobile(e.target.value)}}
+                type="text"
               />
             </div>
             <div className="mb-4">

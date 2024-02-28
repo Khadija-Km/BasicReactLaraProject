@@ -11,6 +11,7 @@ function Edit4() {
     const[ndvignette,SetNdvignette]=useState("");
     const[benificiaire,SetBenificiaire]=useState("");
     const[service,SetService]=useState("");
+    const[automobile,SetAutomobile]=useState("");
     const[Immatriculation,SetImmatriculation]=useState("");
     useEffect(()=>{
         fetchVignette();
@@ -19,12 +20,13 @@ function Edit4() {
         await axios.get('http://localhost:8000/api/Vignettes/'+id)
         .then((data)=>{
             console.log(data)
-            const {date,nvignette,ndvignette,benificiaire,service,Immatriculation}=data.data.Vignette
+            const {date,nvignette,ndvignette,benificiaire,service,automobile,Immatriculation}=data.data.Vignette
             SetDate(date)
             SetNvignette(nvignette)
             SetNdvignette(ndvignette)
             SetBenificiaire(benificiaire)
             SetService(service)
+            SetAutomobile(automobile)
             SetImmatriculation(Immatriculation)
         }).catch(({response:data})=>{
             console.log(data.message)
@@ -39,6 +41,7 @@ function Edit4() {
         formData.append('ndvignette',ndvignette)
         formData.append('benificiaire',benificiaire)
         formData.append('service',service)
+        formData.append('automobile',automobile)
         formData.append('Immatriculation',Immatriculation)
         await axios.post('http://127.0.0.1:8000/api/Vignettes/'+id,formData)
         .then(({data})=>{
@@ -134,6 +137,18 @@ function Edit4() {
               <option value="Service de la communication et du suivi">Service de la communication et du suivi</option>
               <option value="Autre">Autre</option>
           </select>
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Automobile:
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                defaultValue={automobile}
+                name='automobile'
+                onChange={(e)=>{SetAutomobile(e.target.value)}}
+              />
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">

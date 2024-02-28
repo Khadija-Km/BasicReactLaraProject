@@ -11,6 +11,7 @@ function Edit5() {
     const[adresse,SetAdresse]=useState("");
     const[telephone,SetTelephone]=useState("");
     const[duree,SetDuree]=useState("");
+    const[automobile,SetAutomobile]=useState("");
     const[immatriculation,SetImmatriculation]=useState("");
     const[Montant,SetMontant]=useState("");
 
@@ -21,12 +22,13 @@ function Edit5() {
         await axios.get('http://localhost:8000/api/Assurances/'+id)
         .then((data)=>{
             console.log(data)
-            const {nagence,nomagence,adresse,telephone,duree,immatriculation,Montant}=data.data.Assurance
+            const {nagence,nomagence,adresse,telephone,duree,automobile,immatriculation,Montant}=data.data.Assurance
             SetNagence(nagence)
             SetNomagence(nomagence)
             SetAdresse(adresse)
             SetTelephone(telephone)
             SetDuree(duree)
+            SetAutomobile(automobile)
             SetImmatriculation(immatriculation)
             SetMontant(Montant)
         }).catch(({response:data})=>{
@@ -42,6 +44,7 @@ function Edit5() {
         formData.append('adresse',adresse)
         formData.append('telephone',telephone)
         formData.append('duree',duree)
+        formData.append('automobile',automobile)
         formData.append('immatriculation',immatriculation)
         formData.append('Montant',Montant)
         await axios.post('http://127.0.0.1:8000/api/Assurances/'+id,formData)
@@ -124,6 +127,18 @@ function Edit5() {
                 name='duree'
                 defaultValue={duree}
                 onChange={(e)=>{SetDuree(e.target.value)}}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Automobile:
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                name='automobile'
+                defaultValue={automobile}
+                onChange={(e)=>{SetAutomobile(e.target.value)}}
               />
             </div>
             <div className="mb-4">

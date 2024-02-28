@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('vehicules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('immatriculation');
+            $table->string('immatriculation')->unique();
             $table->string('categorie');
             $table->string('marque');
             $table->string('carburant');

@@ -10,6 +10,7 @@ function CRUD4() {
     const[ndvignette,SetNdvignette]=useState("");
     const[benificiaire,SetBenificiaire]=useState("");
     const[service,SetService]=useState("");
+    const[automobile,SetAutomobile]=useState("");
     const[Immatriculation,SetImmatriculation]=useState("");
     const createVignette = async(e)=>{
         e.preventDefault();
@@ -112,6 +113,17 @@ function CRUD4() {
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Automobile:
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                value={automobile}
+                onChange={(e)=>{SetAutomobile(e.target.value)}}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                 Imma-Auto:
               </label>
               <input
@@ -119,7 +131,6 @@ function CRUD4() {
                 type="text"
                 value={Immatriculation}
                 onChange={(e)=>{SetImmatriculation(e.target.value)}}
-                placeholder="Immatriculation-Auto"
               />
             </div>
             <div className="flex items-center justify-between">

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vignette;
+use App\Models\Ville;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class VignetteController extends Controller
+class VilleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Vignette::all());
+        return response()->json(Ville::all());
     }
 
     /**
@@ -32,15 +32,10 @@ class VignetteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date'=>'required',
-            'nvignette'=>'required',
-            'ndvignette'=>'required',
-            'benificiaire'=>'required',
-            'service'=>'required',
-            'automobile'=>'required',
-            'Immatriculation'=>'required',
+            'NomVille'=>'required',
+            'Region'=>'required',
         ]);
-        Vignette::create($request->post());
+        Ville::create($request->post());
         return response()->json([
             'message'=>'element ajoute avec succes'
         ]);
@@ -49,17 +44,17 @@ class VignetteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vignette $Vignette)
+    public function show(Ville $Ville)
     {
         return response()->json([
-            'Vignette'=>$Vignette
+            'Ville'=>$Ville
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vignette $vignette)
+    public function edit(Ville $Ville)
     {
         //
     }
@@ -67,30 +62,25 @@ class VignetteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vignette $Vignette)
+    public function update(Request $request, Ville $Ville)
     {
         $request->validate([
-            'date'=>'required',
-            'nvignette'=>'required',
-            'ndvignette'=>'required',
-            'benificiaire'=>'required',
-            'service'=>'required',
-            'automobile'=>'required',
-            'Immatriculation'=>'required',
+            'NomVille'=>'required',
+            'Region'=>'required',
         ]);
-        $Vignette->fill($request->post())->update();
+        $Ville->fill($request->post())->update();
 
-        $Vignette->save();
+        $Ville->save();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vignette $Vignette)
+    public function destroy(Ville $Ville)
     {
-        $Vignette->delete();
+        $Ville->delete();
         return response()->json([
-            $Vignette
+            $Ville
             //'message'=>'element supprimer avec succes'
         ]);
     }

@@ -81,6 +81,7 @@ function Maintenance() {
                                 <th className="border px-2 py-2">Nom Garage</th>
                                 <th className="border px-2 py-2">Adresse</th>
                                 <th className="border px-2 py-2">Téléphone</th>
+                                <th className="border px-2 py-2">Automobile</th>
                                 <th className="border px-2 py-2">Imma-Auto</th>
                                 <th className="border px-2 py-2">Action</th>
                             </tr>
@@ -95,6 +96,7 @@ function Maintenance() {
                                     <td className="border px-2 py-2">{maintenance.nomgarage}</td>
                                     <td className="border px-2 py-2">{maintenance.Adresse}</td>
                                     <td className="border px-2 py-2">{maintenance.Telephone}</td>
+                                    <td className="border px-2 py-2">{maintenance.automobile}</td>
                                     <td className="border px-2 py-2">{maintenance.immatriculation}</td>
                                     <td className="border px-2 py-2 flex justify-between">
                                         <Link to={`/Edit6/${maintenance.id}`}><Button className="mr-1">Modifier</Button></Link>

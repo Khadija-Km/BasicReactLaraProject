@@ -37,6 +37,7 @@ class AssuranceController extends Controller
             'adresse'=>'required',
             'telephone'=>'required',
             'duree'=>'required',
+            'automobile'=>'required',
             'immatriculation'=>'required',
             'Montant'=>'required'
         ]);
@@ -75,6 +76,7 @@ class AssuranceController extends Controller
             'adresse'=>'required',
             'telephone'=>'required',
             'duree'=>'required',
+            'automobile'=>'required',
             'immatriculation'=>'required',
             'Montant'=>'required'
         ]);

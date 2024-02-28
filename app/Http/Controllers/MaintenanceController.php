@@ -39,6 +39,7 @@ class MaintenanceController extends Controller
             'nomgarage'=>'required',
             'Adresse'=>'required',
             'Telephone'=>'required',
+            'automobile'=>'required',
             'immatriculation'=>'required'
         ]);
         Maintenance::create($request->post());
@@ -78,6 +79,7 @@ class MaintenanceController extends Controller
             'nomgarage'=>'required',
             'Adresse'=>'required',
             'Telephone'=>'required',
+            'automobile'=>'required',
             'immatriculation'=>'required'
         ]);
         $Maintenance->fill($request->post())->update();

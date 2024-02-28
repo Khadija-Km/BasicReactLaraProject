@@ -44,6 +44,16 @@ export function Sidebar({ className }) {
             Maintenance
             </Button>
             </Link>
+            <Link to={'/Agence'}>
+            <Button variant="ghost" className="w-full justify-start">
+            Agences
+            </Button>
+            </Link>
+            <Link to={'/Garage'}>
+            <Button variant="ghost" className="w-full justify-start">
+            Garages
+            </Button>
+            </Link>
           </div>
         </div>
       </div>

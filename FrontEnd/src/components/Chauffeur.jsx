@@ -3,7 +3,6 @@ import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function Chauffeur(){
 const [chauffeurs,setChauffeurs]= useState([])
     useEffect(()=>{
@@ -47,18 +46,6 @@ const [chauffeurs,setChauffeurs]= useState([])
             <Button className="mb-4">Ajouter</Button>
           </Link>
           <Button onClick={handlePrint} className="mb-4 ml-4">Imprimer</Button>
-          <div style={{padding:"5px"}}>
-                        <Button>
-                        <ReactHTMLTableToExcel
-    id="test-table-xls-button"
-    className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded"
-    table="table-to-xls"
-    filename="liste_vehicules"
-    sheet="liste_vehicules"
-    buttonText="Export to Excel"
-    />
-</Button>
-</div>
           <table className="table-auto border-collapse border border-gray-400">
             <thead>
               <tr>

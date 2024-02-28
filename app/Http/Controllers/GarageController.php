@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mission;
+use App\Models\Garage;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class MissionController extends Controller
+class GarageController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Mission::all());
+        return response()->json(Garage::all());
     }
 
     /**
@@ -32,14 +32,12 @@ class MissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date'=>'required',
-            'titreMission'=>'required',
-            'benificiaire'=>'required',
-            'service'=>'required',
-            'destination'=>'required',
-            'immatriculation'=>'required'
+            'NGarage'=>'required',
+            'Nomgarage'=>'required',
+            'Adresse'=>'required',
+            'telephone'=>'required',
         ]);
-        Mission::create($request->post());
+        Garage::create($request->post());
         return response()->json([
             'message'=>'element ajoute avec succes'
         ]);
@@ -48,17 +46,17 @@ class MissionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Mission $Mission)
+    public function show(Garage $Garage)
     {
         return response()->json([
-            'Mission'=>$Mission
+            'Garage'=>$Garage
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mission $mission)
+    public function edit(Garage $Garage)
     {
         //
     }
@@ -66,29 +64,27 @@ class MissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mission $Mission)
+    public function update(Request $request, Garage $Garage)
     {
         $request->validate([
-            'date'=>'required',
-            'titreMission'=>'required',
-            'benificiaire'=>'required',
-            'service'=>'required',
-            'destination'=>'required',
-            'immatriculation'=>'required'
+            'NGarage'=>'required',
+            'Nomgarage'=>'required',
+            'Adresse'=>'required',
+            'telephone'=>'required',
         ]);
-        $Mission->fill($request->post())->update();
+        $Garage->fill($request->post())->update();
 
-        $Mission->save();
+        $Garage->save();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mission $Mission)
+    public function destroy(Garage $Garage)
     {
-        $Mission->delete();
+        $Garage->delete();
         return response()->json([
-            $Mission
+            $Garage
             //'message'=>'element supprimer avec succes'
         ]);
     }

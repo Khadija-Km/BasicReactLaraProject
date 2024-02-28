@@ -10,6 +10,7 @@ function CRUD5() {
     const[adresse,SetAdresse]=useState("");
     const[telephone,SetTelephone]=useState("");
     const[duree,SetDuree]=useState("");
+    const[automobile,SetAutomobile]=useState("");
     const[immatriculation,SetImmatriculation]=useState("");
     const[Montant,SetMontant]=useState("");
     const createAssurance = async(e)=>{
@@ -20,6 +21,7 @@ function CRUD5() {
         formData.append('adresse',adresse)
         formData.append('telephone',telephone)
         formData.append('duree',duree)
+        formData.append('automobile',automobile)
         formData.append('immatriculation',immatriculation)
         formData.append('Montant',Montant)
         await axios.post('http://localhost:8000/api/Assurances',formData)
@@ -96,6 +98,17 @@ function CRUD5() {
                 type="text"
                 value={duree}
                 onChange={(e)=>{SetDuree(e.target.value)}}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Automobile:
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                value={automobile}
+                onChange={(e)=>{SetAutomobile(e.target.value)}}
               />
             </div>
             <div className="mb-4">

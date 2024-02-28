@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vignette extends Model
+class Garage extends Model
 {
     use HasFactory;
-    protected $fillable = ['date','nvignette','ndvignette',"service",'benificiaire','automobile','Immatriculation',];
+    protected $fillable = ['NGarage','Nomgarage','Adresse','telephone'];
 }

@@ -3,9 +3,8 @@ import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 import axios from 'axios';
 import {useState,useEffect} from 'react';
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 function Assurances() {
-    const [assurances,setAssurances]= useState([])
+    const [assurances,setAssurances]= useState([]);
     useEffect(()=>{
         fetchAssurances();
     },[])
@@ -48,18 +47,6 @@ return (
             <Button className="mb-4">Ajouter</Button>
           </Link>
           <Button onClick={handlePrint} className="mb-4 ml-4">Imprimer</Button>
-          <div style={{padding:"5px"}}>
-                        <Button>
-                        <ReactHTMLTableToExcel
-    id="test-table-xls-button"
-    className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded"
-    table="table-to-xls"
-    filename="liste_vehicules"
-    sheet="liste_vehicules"
-    buttonText="Export to Excel"
-    />
-    </Button>
-</div>
           <table className="table-auto border-collapse border border-gray-400">
             <thead>
               <tr>
@@ -67,7 +54,8 @@ return (
                 <th className="border px-2 py-2">Nom_Agence</th>
                 <th className="border px-2 py-2">Adresse</th>
                 <th className="border px-2 py-2">Telephone</th>
-                <th className="border px-2 py-2">Duree</th>
+                <th className="border px-2 py-2">Durée</th>
+                <th className="border px-2 py-2">Automobile</th>
                 <th className="border px-2 py-2">Imm_Auto</th>
                 <th className="border px-2 py-2">Montant</th>
                 <th className="border px-2 py-2">Action</th>
@@ -83,6 +71,7 @@ return (
                 <td className="border px-2 py-2">{assurance.adresse}</td>
                 <td className="border px-2 py-2">{assurance.telephone}</td>
                 <td className="border px-2 py-2">{assurance.duree}</td>
+                <td className="border px-2 py-2">{assurance.automobile}</td>
                 <td className="border px-2 py-2">{assurance.immatriculation}</td>
                 <td className="border px-2 py-2">{assurance.Montant}</td>
                 <td className="border px-2 py-2 flex justify-between">

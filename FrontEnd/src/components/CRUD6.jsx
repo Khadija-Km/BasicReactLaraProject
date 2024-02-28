@@ -12,6 +12,7 @@ function CRUD6() {
     const[nomgarage,SetNomgarage]=useState("");
     const[Adresse,SetAdresse]=useState("");
     const[Telephone,SetTelephone]=useState("");
+    const[automobile,SetAutomobile]=useState("");
     const[immatriculation,SetImmatriculation]=useState("");
     const createMaintenace = async(e)=>{
         e.preventDefault();
@@ -23,6 +24,7 @@ function CRUD6() {
         formData.append('nomgarage',nomgarage)
         formData.append('Adresse',Adresse)
         formData.append('Telephone',Telephone)
+        formData.append('automobile',automobile)
         formData.append('immatriculation',immatriculation)
         await axios.post('http://localhost:8000/api/Maintenances',formData)
         .then(({data})=>{
@@ -120,6 +122,17 @@ function CRUD6() {
                 value={Telephone}
                 onChange={(e)=>{SetTelephone(e.target.value)}}
                 type="tel"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Automobile:
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                value={automobile}
+                onChange={(e)=>{SetAutomobile(e.target.value)}}
+                type="text"
               />
             </div>
             <div className="mb-4">

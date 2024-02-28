@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('ndvignette');
             $table->string('benificiaire');
             $table->string('service');
-            $table->string('Immatriculation');
+            $table->foreignId('immatriculation')->constraind('vehicules','immatriculation');
             $table->timestamps();
         });
     }

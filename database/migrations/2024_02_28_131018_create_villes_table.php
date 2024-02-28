@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assurances', function (Blueprint $table) {
+        Schema::create('villes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('Nagence')->constraind('agences','Nagence');
-            $table->string('duree');
-            $table->foreignId('immatriculation')->constraind('vehicules','immatriculation');
-            $table->string('Montant');
+            $table->string('NomVille');
+            $table->string('Region');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assurances');
+        Schema::dropIfExists('villes');
     }
 };

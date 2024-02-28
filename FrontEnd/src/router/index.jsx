@@ -12,26 +12,27 @@ import Layout from '../Layout/Layout.jsx';
 import AdminDashboard  from '../components/AdminDashboard.jsx';
 import GuestLayout from'../Layout/GuestLayout.jsx';
 import AdminDashboardLayout from '../Layout/AdminDashboardLayout.jsx'
+import Agence from '../components/Agence.jsx';
+import Garage from "../components/Garage.jsx";
 import CRUD1 from "../components/CRUD1.jsx";
 import CRUD2 from "../components/CRUD2.jsx";
 import CRUD3 from "../components/CRUD3.jsx";
 import CRUD4 from "../components/CRUD4.jsx";
 import CRUD5 from "../components/CRUD5.jsx";
 import CRUD6 from "../components/CRUD6.jsx";
+import CRUD7 from "../components/CRUD7.jsx";
+import CRUD8 from "../components/CRUD8.jsx";
 import Edit1 from "../components/Edit1.jsx";
 import Edit2 from "../components/Edit2.jsx";
 import Edit3 from "../components/Edit3.jsx";
 import Edit4 from "../components/Edit4.jsx";
 import Edit5 from "../components/Edit5.jsx";
 import Edit6 from "../components/Edit6.jsx";
+import Edit7 from "../components/Edit7.jsx";
+import Edit8 from "../components/Edit8.jsx";
 export const LOGIN_ROUTE = '/login'
 export const AdminDashboard_Path = '/AdminDashboard';
 
-
-//path="/ListeVehicules" element={<ListeVehicules />}
-//path="/Vignettes" element={<Vignettes />}
-//path="/Maintenance" element={<Maintenance />}
-//path="/Mision" element={<Mision />}
 export const router = createBrowserRouter([
     {
         element: <Layout/>,
@@ -83,6 +84,14 @@ export const router = createBrowserRouter([
             element: <Maintenance/>
         },
         {
+            path: "/Agence",
+            element: <Agence/>
+        },
+        {
+            path: "/Garage",
+            element: <Garage/>
+        },
+        {
             path: "/Formulaire1",
             element: <CRUD1/>
         },
@@ -107,6 +116,14 @@ export const router = createBrowserRouter([
             element: <CRUD6/>
         },
         {
+            path: "/Formulaire7",
+            element: <CRUD7/>
+        },
+        {
+            path: "/Formulaire8",
+            element: <CRUD8/>
+        },
+        {
             path: "/Edit1/:id",
             element: <Edit1/>
         },
@@ -129,6 +146,14 @@ export const router = createBrowserRouter([
         {
             path: "/Edit6/:id",
             element: <Edit6/>
+        },
+        {
+            path: "/Edit7/:id",
+            element: <Edit7/>
+        },
+        {
+            path: "/Edit8/:id",
+            element: <Edit8/>
         }
         ]
     },

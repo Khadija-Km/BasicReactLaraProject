@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('missions', function (Blueprint $table) {
+        Schema::create('garages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('date');
-            $table->string('titreMission');
-            $table->string('benificiaire');
-            $table->string('service');
-            $table->string('destination');
-            $table->string('immatriculation');
+            $table->string('NGarage')->unique();
+            $table->string('Nomgarage');
+            $table->string('Adresse');
+            $table->string('telephone');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('missions');
+        Schema::dropIfExists('garages');
     }
 };

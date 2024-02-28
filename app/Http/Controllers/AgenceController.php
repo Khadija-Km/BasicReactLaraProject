@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vignette;
+use App\Models\Agence;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class VignetteController extends Controller
+class AgenceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return response()->json(Vignette::all());
+        return response()->json(Agence::all());
     }
 
     /**
@@ -32,15 +32,12 @@ class VignetteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date'=>'required',
-            'nvignette'=>'required',
-            'ndvignette'=>'required',
-            'benificiaire'=>'required',
-            'service'=>'required',
-            'automobile'=>'required',
-            'Immatriculation'=>'required',
+            'Nagence'=>'required',
+            'Nomagence'=>'required',
+            'Adresse'=>'required',
+            'telephone'=>'required',
         ]);
-        Vignette::create($request->post());
+        Agence::create($request->post());
         return response()->json([
             'message'=>'element ajoute avec succes'
         ]);
@@ -49,17 +46,17 @@ class VignetteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vignette $Vignette)
+    public function show(Agence $Agence)
     {
         return response()->json([
-            'Vignette'=>$Vignette
+            'Agence'=>$Agence
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vignette $vignette)
+    public function edit(Agence $Agence)
     {
         //
     }
@@ -67,30 +64,27 @@ class VignetteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vignette $Vignette)
+    public function update(Request $request, Agence $Agence)
     {
         $request->validate([
-            'date'=>'required',
-            'nvignette'=>'required',
-            'ndvignette'=>'required',
-            'benificiaire'=>'required',
-            'service'=>'required',
-            'automobile'=>'required',
-            'Immatriculation'=>'required',
+            'Nagence'=>'required',
+            'Nomagence'=>'required',
+            'Adresse'=>'required',
+            'telephone'=>'required',
         ]);
-        $Vignette->fill($request->post())->update();
+        $Agence->fill($request->post())->update();
 
-        $Vignette->save();
+        $Agence->save();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Vignette $Vignette)
+    public function destroy(Agence $Agence)
     {
-        $Vignette->delete();
+        $Agence->delete();
         return response()->json([
-            $Vignette
+            $Agence
             //'message'=>'element supprimer avec succes'
         ]);
     }
