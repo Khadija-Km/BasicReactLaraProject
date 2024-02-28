@@ -36,10 +36,6 @@ class MaintenanceController extends Controller
             'montant'=>'required',
             'date'=>'required',
             'ngarage'=>'required',
-            'nomgarage'=>'required',
-            'Adresse'=>'required',
-            'Telephone'=>'required',
-            'automobile'=>'required',
             'immatriculation'=>'required'
         ]);
         Maintenance::create($request->post());

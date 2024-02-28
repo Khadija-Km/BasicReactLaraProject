@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('ndvignette');
             $table->string('benificiaire');
             $table->string('service');
-            $table->foreignId('immatriculation')->constraind('vehicules','immatriculation');
+            $table->string('immatriculation');
+            $table->foreign('immatriculation')->references('immatriculation')->on('vehicules');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vignettes');
+        Schema::drop('vignettes');
     }
 };

@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('assurances', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('Nagence')->constraind('agences','Nagence');
+            $table->string('Nagence');
+            $table->foreign('Nagence')->references('Nagence')->on('agences');
             $table->string('duree');
-            $table->foreignId('immatriculation')->constraind('vehicules','immatriculation');
+            $table->string('immatriculation');
+            $table->foreign('immatriculation')->references('immatriculation')->on('vehicules');
             $table->string('Montant');
             $table->timestamps();
         });

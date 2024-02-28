@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('typemaintenance');
             $table->string('montant');
             $table->date('date');
-            $table->foreignId('NGarage')->constraind('garages','NGarage');
-            $table->foreignId('immatriculation')->constraind('vehicules','immatriculation');
+            $table->string('immatriculation');
+            $table->string('NGarage');
+            $table->foreign('NGarage')->references('NGarage')->on('garages');
+            $table->foreign('immatriculation')->references('immatriculation')->on('vehicules');
             $table->timestamps();
         });
     }

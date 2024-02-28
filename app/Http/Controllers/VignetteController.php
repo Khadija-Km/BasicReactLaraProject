@@ -37,7 +37,6 @@ class VignetteController extends Controller
             'ndvignette'=>'required',
             'benificiaire'=>'required',
             'service'=>'required',
-            'automobile'=>'required',
             'Immatriculation'=>'required',
         ]);
         Vignette::create($request->post());

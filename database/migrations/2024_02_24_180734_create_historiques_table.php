@@ -16,11 +16,12 @@ return new class extends Migration
             $table->date('date');
             $table->string('mission');
             $table->string('service');
-            $table->foreignId('immatriculation')->constraind('vehicules','immatriculation');
+            $table->string('immatriculation');
+            $table->foreign('immatriculation')->references('immatriculation')->on('vehicules');
             $table->string('chauffeur');
-            $table->foreignId('chauffeur_id')->constraind('chauffeur');
+            $table->foreignId('chauffeur_id')->constrained('chauffeurs');
             $table->string('destination');
-            $table->foreignId('ville_id')->constraind('ville');
+            $table->foreignId('ville_id')->constrained('villes');
             $table->timestamps();
         });
     }

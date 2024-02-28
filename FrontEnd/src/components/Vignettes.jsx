@@ -70,8 +70,7 @@ function Vignettes() {
                         <td className="border px-2 py-2">{vignette.ndvignette}</td>
                         <td className="border px-2 py-2">{vignette.benificiaire}</td>
                         <td className="border px-2 py-2">{vignette.service}</td>
-                        <td className="border px-2 py-2">{vignette.automobile}</td>
-                        <td className="border px-2 py-2">{vignette.Immatriculation}</td>
+                        <td className="border px-2 py-2">{vignette.immatriculation}</td>
                         <td className="border px-2 py-2 flex justify-between">
                         <Link to={`/Edit4/${vignette.id}`}><Button className="mr-1">Modifier</Button></Link>
                           <Button onClick={()=>deleteVignette(vignette.id)}>Supprimer</Button>

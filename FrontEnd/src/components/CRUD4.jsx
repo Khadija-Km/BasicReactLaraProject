@@ -1,17 +1,34 @@
 import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 import axios from 'axios';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import AdminApi from "../services/Api/Adminn/AdminApi.js";
 function CRUD4() {
     const navigate=useNavigate("");
+    const [vehicules, setVehicules] = useState([]);
     const[date,SetDate]=useState("");
     const[nvignette,SetNvignette]=useState("");
     const[ndvignette,SetNdvignette]=useState("");
     const[benificiaire,SetBenificiaire]=useState("");
     const[service,SetService]=useState("");
-    const[automobile,SetAutomobile]=useState("");
     const[Immatriculation,SetImmatriculation]=useState("");
+
+
+    useEffect(() => {
+        const getChauffeurAndHistoriqus = async ()=>{
+            try{
+                const VehiculesResponse = await AdminApi.getVehicules();
+                console.log(VehiculesResponse)
+                setVehicules(VehiculesResponse.data)
+            }catch (error)
+            {
+                console.error(error)
+            }
+        }
+
+        getChauffeurAndHistoriqus()
+    }, []);
     const createVignette = async(e)=>{
         e.preventDefault();
         const formData = new FormData();
@@ -111,31 +128,21 @@ function CRUD4() {
           </select>
 
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-                Automobile:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                value={automobile}
-                onChange={(e)=>{SetAutomobile(e.target.value)}}
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-                Imma-Auto:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                value={Immatriculation}
-                onChange={(e)=>{SetImmatriculation(e.target.value)}}
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <Button type='submit'>Enregistrer</Button>
-            </div>
+              <div className="mb-4">
+                  <select
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={(e) => {
+                          SetImmatriculation(e.target.value)
+                      }}>
+                      <option value={""}>select immatriculation</option>
+                      {vehicules?.map((vehicule, key) => (
+                          <option key={key} value={vehicule?.immatriculation}>{vehicule?.immatriculation}</option>
+                      ))}
+                  </select>
+              </div>
+              <div className="flex items-center justify-between">
+                  <Button type='submit'>Enregistrer</Button>
+              </div>
           </form>
         </div>
       </div>

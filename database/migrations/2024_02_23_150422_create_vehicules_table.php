@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('vehicules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('immatriculation')->unique();
-            $table->string('categorie');
-            $table->string('marque');
-            $table->string('carburant');
-            $table->integer('nplace');
-            $table->string('ngrise');
-            $table->string('enpanne');
+            $table->date('date');
+            $table->string('nvignette');
+            $table->string('ndvignette');
+            $table->string('benificiaire');
+            $table->string('service');
             $table->timestamps();
         });
     }

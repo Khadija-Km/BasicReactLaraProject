@@ -35,11 +35,10 @@ class HistoriqueController extends Controller
             'date'=>'required',
             'mission'=>'required',
             'service'=>'required',
-            'automobile'=>'required',
             'immatriculation'=>'required',
-            'chauffeur'=>'required',
+            'chauffeur_id'=>'required',
             'destination'=>'required',
-            'ville'=>'required'
+            'ville_id'=>'required'
         ]);
         Historique::create($request->post());
         return response()->json([

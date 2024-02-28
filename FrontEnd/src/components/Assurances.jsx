@@ -51,11 +51,7 @@ return (
             <thead>
               <tr>
                 <th className="border px-2 py-2">N_Agence</th>
-                <th className="border px-2 py-2">Nom_Agence</th>
-                <th className="border px-2 py-2">Adresse</th>
-                <th className="border px-2 py-2">Telephone</th>
                 <th className="border px-2 py-2">Durée</th>
-                <th className="border px-2 py-2">Automobile</th>
                 <th className="border px-2 py-2">Imm_Auto</th>
                 <th className="border px-2 py-2">Montant</th>
                 <th className="border px-2 py-2">Action</th>
@@ -66,12 +62,8 @@ return (
                     assurances.length>0 && (
                         assurances.map((assurance,index)=>(
                             <tr className="bg-gray-100" key={index}>
-                <td className="border px-2 py-2">{assurance.nagence}</td>
-                <td className="border px-2 py-2">{assurance.nomagence}</td>
-                <td className="border px-2 py-2">{assurance.adresse}</td>
-                <td className="border px-2 py-2">{assurance.telephone}</td>
+                <td className="border px-2 py-2">{assurance.Nagence}</td>
                 <td className="border px-2 py-2">{assurance.duree}</td>
-                <td className="border px-2 py-2">{assurance.automobile}</td>
                 <td className="border px-2 py-2">{assurance.immatriculation}</td>
                 <td className="border px-2 py-2">{assurance.Montant}</td>
                 <td className="border px-2 py-2 flex justify-between">

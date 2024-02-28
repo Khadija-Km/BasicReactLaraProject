@@ -1,19 +1,39 @@
 import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 import axios from 'axios';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import{AdminDashboard_Path} from '../router/index'
+import AdminApi from "../services/Api/Adminn/AdminApi.js";
 function CRUD1() {
     const navigate=useNavigate("");
+    const [chauffeurs, setChauffeurs] = useState([]);
+    const [Vehicules, setVehicules] = useState([]);
     const[date,SetDate]=useState("");
     const[mission,SetMission]=useState("");
     const[service,SetService]=useState("");
-    const[automobile,SetAutomobile]=useState("");
     const[immatriculation,SetImmatriculation]=useState("");
     const[chauffeur,SetChauffeur]=useState("");
     const[destination,SetDestination]=useState('');
     const[ville,SetVille]=useState("");
+
+
+    useEffect(() => {
+       const getChauffeurAndHistoriqus = async ()=>{
+         try{
+             const {data} =await AdminApi.getChauffeurs()
+             setChauffeurs(data)
+             const VehiculesResponse = await AdminApi.getVehicules();
+             console.log(VehiculesResponse)
+             setVehicules(VehiculesResponse.data)
+         }catch (error)
+         {
+             console.error(error)
+         }
+       }
+
+       getChauffeurAndHistoriqus()
+    }, []);
 
     const createHistorique = async(e)=>{
         e.preventDefault();
@@ -21,11 +41,10 @@ function CRUD1() {
         formData.append('date',date)
         formData.append('mission',mission)
         formData.append('service',service)
-        formData.append('automobile',automobile)
         formData.append('immatriculation',immatriculation)
-        formData.append('chauffeur',chauffeur)
+        formData.append('chauffeur_id',chauffeur)
         formData.append('destination',destination)
-        formData.append('ville',ville)
+        formData.append('ville_id',ville)
         await axios.post('http://localhost:8000/api/Historiques',formData)
         .then(({data})=>{
             console.log(data.message)
@@ -95,48 +114,44 @@ function CRUD1() {
             </select>
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-                Automobile:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                value={automobile}
-                onChange={(e)=>{SetAutomobile(e.target.value)}}
-                type="text"
-              />
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                 Immatriculation-Auto:
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                value={immatriculation}
-                onChange={(e)=>{SetImmatriculation(e.target.value)}}
-                type="text"
-              />
+             <select className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                     onChange={(e)=>{SetImmatriculation(e.target.value)}}>
+                 <option value={""}>select immatriculation</option>
+                 {Vehicules?.map((vehicule , key)=>(
+                     <option key={key} value={vehicule?.immatriculation}>{vehicule?.immatriculation}</option>
+                 ))}
+             </select>
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-              Chauffeur:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                value={chauffeur}
-                onChange={(e)=>{SetChauffeur(e.target.value)}}
-                type="text"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-                Destination:
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                value={destination}
-                onChange={(e)=>{SetDestination(e.target.value)}}
-                type="text"
-              />
+              <div className="mb-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                      Chauffeur:
+                  </label>
+                  <select
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={(e)=>{SetChauffeur(e.target.value)}}>
+                      <option value={""}>select chauffeur</option>
+                      {chauffeurs?.map((chauffeur, key) => (
+                          <option key={key} value={chauffeur?.id}>{chauffeur?.nom}</option>
+                      ))}
+                  </select>
+              </div>
+              <div className="mb-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                      Destination:
+                  </label>
+                  <input
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={destination}
+                      onChange={(e) => {
+                          SetDestination(e.target.value)
+                      }}
+                      type="text"
+                  />
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
