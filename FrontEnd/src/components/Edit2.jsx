@@ -10,7 +10,7 @@ function Edit2() {
     const[categorie,SetCategorie]=useState("");
     const[marque,SetMarque]=useState("");
     const[carburant,SetCarburant]=useState("");
-    const[nplace,SetNplace]=useState("");
+    const[nplace,SetNplace]=useState();
     const[ngrise,SetNgrise]=useState("");
     const[enpanne,SetEnpanne]=useState('');
 

@@ -55,7 +55,7 @@ function Vignettes() {
                         <th className="border px-2 py-2">Montant Vignette</th>
                         <th className="border px-2 py-2">Benificiaire</th>
                         <th className="border px-2 py-2">Division/Service</th>
-                        <th className="border px-2 py-2">Automobile</th>
+                        <th className="border px-2 py-2">marque</th>
                         <th className="border px-2 py-2">Immatricul-Auto</th>
                         <th className="border px-2 py-2">Action</th>
                       </tr>
@@ -70,6 +70,7 @@ function Vignettes() {
                         <td className="border px-2 py-2">{vignette.ndvignette}</td>
                         <td className="border px-2 py-2">{vignette.benificiaire}</td>
                         <td className="border px-2 py-2">{vignette.service}</td>
+                        <td className="border px-2 py-2">{vignette?.vehicule?.marque}</td>
                         <td className="border px-2 py-2">{vignette.immatriculation}</td>
                         <td className="border px-2 py-2 flex justify-between">
                         <Link to={`/Edit4/${vignette.id}`}><Button className="mr-1">Modifier</Button></Link>

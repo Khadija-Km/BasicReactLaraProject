@@ -75,7 +75,10 @@ function AdminDashboard() {
                                 <th className="border px-2 py-2">Mission</th>
                                 <th className="border px-2 py-2">Division/Service</th>
                                 <th className="border px-2 py-2">Immat-auto</th>
-                                <th className="border px-2 py-2">chaufeur id </th>
+                                <th className="border px-2 py-2">chauffeur telephone  </th>
+                                <th className="border px-2 py-2">chaufeur nom </th>
+                                <th className="border px-2 py-2">chaufeur cin  </th>
+                                <th className="border px-2 py-2">marque  </th>
                                 <th className="border px-2 py-2">Destination</th>
                                 <th className="border px-2 py-2">Ville</th>
                                 <th className="border px-2 py-2">Action</th>
@@ -88,9 +91,12 @@ function AdminDashboard() {
                                     <td className="border px-2 py-2">{histo.mission}</td>
                                     <td className="border px-2 py-2">{histo.service}</td>
                                     <td className="border px-2 py-2">{histo.immatriculation}</td>
-                                    <td className="border px-2 py-2">{histo.chauffeur_id}</td>
+                                    <td className="border px-2 py-2">{histo?.chauffeur?.telephone}</td>
+                                    <td className="border px-2 py-2">{histo?.chauffeur?.nom}</td>
+                                    <td className="border px-2 py-2">{histo?.chauffeur?.cin}</td>
+                                    <td className="border px-2 py-2">{histo?.vehicule?.marque}</td>
                                     <td className="border px-2 py-2">{histo.destination}</td>
-                                    <td className="border px-2 py-2">{histo.ville_id}</td>
+                                    <td className="border px-2 py-2">{histo?.ville?.NomVille}</td>
                                     <td className="border px-2 py-2 flex justify-between">
                                         <Link to={`/Edit1/${histo.id}`}><Button className="mr-1">Modifier</Button></Link>
                                         <Button onClick={() => deleteHistorique(histo.id)}>Supprimer</Button>

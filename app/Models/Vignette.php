@@ -9,4 +9,10 @@ class Vignette extends Model
 {
     use HasFactory;
     protected $fillable = ['date','nvignette','ndvignette',"service",'benificiaire','Immatriculation',];
+
+
+    public  function vehicule()
+    {
+        return $this->belongsTo(Vehicule::class ,'immatriculation', 'immatriculation');
+    }
 }

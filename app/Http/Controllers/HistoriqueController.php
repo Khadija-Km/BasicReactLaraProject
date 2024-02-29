@@ -15,7 +15,10 @@ class HistoriqueController extends Controller
      */
     public function index()
     {
-        return response()->json(Historique::all());
+        $historiques = Historique::with('chauffeur' , 'vehicule' , 'ville')->get();
+
+        // Return the historiques data as JSON response
+        return response()->json($historiques);
     }
 
     /**
@@ -73,11 +76,10 @@ class HistoriqueController extends Controller
             'date'=>'required',
             'mission'=>'required',
             'service'=>'required',
-            'automobile'=>'required',
             'immatriculation'=>'required',
-            'chauffeur'=>'required',
+            'chauffeur_id'=>'required',
             'destination'=>'required',
-            'ville'=>'required'
+            'ville_id'=>'required'
         ]);
         $Historique->fill($request->post())->update();
 

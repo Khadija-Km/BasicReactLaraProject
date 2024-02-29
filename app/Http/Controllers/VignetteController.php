@@ -15,7 +15,9 @@ class VignetteController extends Controller
      */
     public function index()
     {
-        return response()->json(Vignette::all());
+
+        $vignettes = Vignette::with('vehicule')->get();
+        return response()->json($vignettes);
     }
 
     /**
@@ -74,7 +76,6 @@ class VignetteController extends Controller
             'ndvignette'=>'required',
             'benificiaire'=>'required',
             'service'=>'required',
-            'automobile'=>'required',
             'Immatriculation'=>'required',
         ]);
         $Vignette->fill($request->post())->update();

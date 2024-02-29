@@ -15,7 +15,9 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        return response()->json(Maintenance::all());
+
+        $maintenances = Maintenance::with('vehicule','garage')->get();
+        return response()->json($maintenances);
     }
 
     /**
@@ -72,10 +74,6 @@ class MaintenanceController extends Controller
             'montant'=>'required',
             'date'=>'required',
             'ngarage'=>'required',
-            'nomgarage'=>'required',
-            'Adresse'=>'required',
-            'Telephone'=>'required',
-            'automobile'=>'required',
             'immatriculation'=>'required'
         ]);
         $Maintenance->fill($request->post())->update();

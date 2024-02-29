@@ -15,7 +15,9 @@ class AssuranceController extends Controller
      */
     public function index()
     {
-        return response()->json(Assurance::all());
+
+        $assurances = Assurance::with('vehicule')->get();
+        return response()->json($assurances);
     }
 
     /**
@@ -68,11 +70,7 @@ class AssuranceController extends Controller
     {
         $request->validate([
             'nagence'=>'required',
-            'nomagence'=>'required',
-            'adresse'=>'required',
-            'telephone'=>'required',
             'duree'=>'required',
-            'automobile'=>'required',
             'immatriculation'=>'required',
             'Montant'=>'required'
         ]);

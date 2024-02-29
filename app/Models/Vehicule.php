@@ -9,4 +9,10 @@ class Vehicule extends Model
 {
     use HasFactory;
     protected $fillable = ['immatriculation','categorie','marque','carburant','nplace','ngrise','enpanne'];
+
+
+    public function historiques()
+    {
+        return $this->hasMany(Historique::class,);
+    }
 }

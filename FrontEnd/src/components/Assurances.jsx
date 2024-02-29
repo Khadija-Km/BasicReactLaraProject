@@ -53,6 +53,7 @@ return (
                 <th className="border px-2 py-2">N_Agence</th>
                 <th className="border px-2 py-2">Durée</th>
                 <th className="border px-2 py-2">Imm_Auto</th>
+                <th className="border px-2 py-2">marque</th>
                 <th className="border px-2 py-2">Montant</th>
                 <th className="border px-2 py-2">Action</th>
               </tr>
@@ -65,6 +66,7 @@ return (
                 <td className="border px-2 py-2">{assurance.Nagence}</td>
                 <td className="border px-2 py-2">{assurance.duree}</td>
                 <td className="border px-2 py-2">{assurance.immatriculation}</td>
+                <td className="border px-2 py-2">{assurance?.vehicule?.marque}</td>
                 <td className="border px-2 py-2">{assurance.Montant}</td>
                 <td className="border px-2 py-2 flex justify-between">
                 <Link to={`/Edit5/${assurance.id}`}><Button className="mr-1">Modifier</Button></Link>

@@ -9,4 +9,8 @@ class Chauffeur extends Model
 {
     use HasFactory;
     protected $fillable = ['cin','nom','prenom','naissance','gpermis','telephone'];
+
+    public function historiques(){
+        return $this->hasMany(Historique::class);
+    }
 }
