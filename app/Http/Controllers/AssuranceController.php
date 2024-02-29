@@ -16,7 +16,7 @@ class AssuranceController extends Controller
     public function index()
     {
 
-        $assurances = Assurance::with('vehicule')->get();
+        $assurances = Assurance::with('vehicule' , 'agence')->get();
         return response()->json($assurances);
     }
 

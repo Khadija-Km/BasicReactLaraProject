@@ -30,6 +30,9 @@ const AdminApi = {
     getGarage : async ()=>{
         return await axiosClient.get('/api/Garages')
     },
+    getVilles : async ()=>{
+        return await axiosClient.get('/api/Villes')
+    },
 
 
 }

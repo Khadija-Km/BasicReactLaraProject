@@ -15,4 +15,8 @@ class Assurance extends Model
     {
         return $this->belongsTo(Vehicule::class ,'immatriculation', 'immatriculation');
     }
+    public  function agence()
+    {
+        return $this->belongsTo(Agence::class ,'Nagence' , 'Nagence');
+    }
 }
