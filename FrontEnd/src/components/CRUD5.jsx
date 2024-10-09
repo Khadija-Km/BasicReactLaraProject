@@ -54,8 +54,11 @@ function CRUD5() {
       </div>
       <div className={'w-100 md:w-3/4'}>
         <div className="p-4">
-          <h2 className="text-2xl mb-4">Ajouter une Agence</h2>
+          <h2 className="text-2xl mb-4">Ajouter une assurance</h2>
             <form onSubmit={createAssurance}>
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                agence:
+                    </label>
                 <select
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     onChange={(e) => {
@@ -79,7 +82,9 @@ function CRUD5() {
                         }}
                     />
                 </div>
-
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                        immatriculation:
+                    </label>
                 <select
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     onChange={(e) => {

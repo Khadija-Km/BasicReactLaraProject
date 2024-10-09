@@ -5,7 +5,7 @@ import { AdminDashboard_Path } from '../router/index';
 import {Car,Clock,User,Tag,Shield,Wrench} from'lucide-react';
 export function Sidebar({ className }) {
   return (
-    <div className={cn("pb-12 bg-gray-200", className)}> {/* Ajout de la classe bg-gray-200 pour l'arrière-plan gris */}
+    <div className={cn("pb-12 bg-gray-200", className)}>
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
@@ -46,11 +46,13 @@ export function Sidebar({ className }) {
             </Link>
             <Link to={'/Agence'}>
             <Button variant="ghost" className="w-full justify-start">
+            <Shield className='mr-2 h-4 w-4'/>
             Agences
             </Button>
             </Link>
             <Link to={'/Garage'}>
             <Button variant="ghost" className="w-full justify-start">
+            <Car className='mr-2 h-4 w-4'/>
             Garages
             </Button>
             </Link>

@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 
 function ListeVehicules() {
     const [vehicules, setVehicules] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
+
 
     useEffect(() => {
         fetchVehicules();
@@ -43,27 +42,11 @@ function ListeVehicules() {
                 <div className={'w-100 md:w-3/4'}>
                     <div className="p-4 flex justify-between">
                         <div>
+                        <h1 className="text-3xl font-bold text-center mb-4">Liste des Véhecules</h1>
                             <Link to="/Formulaire2">
                                 <Button className="mr-2">Ajouter</Button>
                             </Link>
                             <Button onClick={window.print} className="mr-2">Imprimer</Button>
-                        </div>
-                        <div className="flex items-center">
-                            <input
-                                type="text"
-                                placeholder="Rechercher..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="border rounded py-1 px-2 mr-2"
-                            />
-                            <ReactHTMLTableToExcel
-                                id="test-table-xls-button"
-                                className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded"
-                                table="table-to-xls"
-                                filename="liste_vehicules"
-                                sheet="liste_vehicules"
-                                buttonText="Export to Excel"
-                            />
                         </div>
                     </div>
                     <table id="table-to-xls" className="table-auto border-collapse border border-gray-400">

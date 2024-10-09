@@ -4,29 +4,18 @@ import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 import axios from 'axios';
 
+
 function AdminDashboard() {
     const [historiques, setHistoriques] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
         fetchHistoriques();
     }, []);
 
-    useEffect(() => {
-        const results = historiques.filter(histo =>
-            Object.values(histo).some(value =>
-                typeof value === 'string' && value.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-        );
-        setSearchResults(results);
-    }, [searchTerm, historiques]);
-
     const fetchHistoriques = async () => {
         try {
             const response = await axios.get('http://localhost:8000/api/Historiques');
             setHistoriques(response.data);
-            setSearchResults(response.data);
         } catch (error) {
             console.error('Error fetching historiques:', error);
         }
@@ -56,48 +45,41 @@ function AdminDashboard() {
 
             <div className={'w-100 md:w-3/4'}>
                 <div className="p-4">
-                    <h1 className="text-3xl font-bold text-center mb-4">Liste des Missions</h1>
+                    <h1 className="text-3xl font-bold mb-4">Liste des Missions</h1>
                     <Link to="/Formulaire1">
                         <Button className="mb-4">Ajouter</Button>
                     </Link>
                     <Button onClick={handlePrint} className="mb-4 ml-4">Imprimer</Button>
-                    <input
-                        type="text"
-                        placeholder="Recherche"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="mb-4 ml-4 px-2 py-1"
-                    />
                     <table className="table-auto border-collapse border border-gray-400">
                         <thead>
                             <tr>
-                                <th className="border px-2 py-2">Date</th>
-                                <th className="border px-2 py-2">Mission</th>
-                                <th className="border px-2 py-2">Division/Service</th>
-                                <th className="border px-2 py-2">Immat-auto</th>
-                                <th className="border px-2 py-2">chauffeur telephone  </th>
-                                <th className="border px-2 py-2">chaufeur nom </th>
-                                <th className="border px-2 py-2">chaufeur cin  </th>
-                                <th className="border px-2 py-2">marque  </th>
-                                <th className="border px-2 py-2">Destination</th>
-                                <th className="border px-2 py-2">Ville</th>
-                                <th className="border px-2 py-2">Action</th>
+                                <th className="border px-1 py-1">Date</th>
+                                <th className="border px-1 py-1">Mission</th>
+                                <th className="border px-1 py-1">Division/Service</th>
+                                <th className="border px-1 py-1">Immat-auto</th>
+                                <th className="border px-1 py-1">chauffeur telephone  </th>
+                                <th className="border px-1 py-1">chaufeur nom </th>
+                                <th className="border px-1 py-1">chaufeur cin  </th>
+                                <th className="border px-1 py-1">marque  </th>
+                                <th className="border px-1 py-1">Destination</th>
+                                <th className="border px-1 py-1">Ville</th>
+                                <th className="border px-1 py-1">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {searchResults.map((histo, index) => (
+                            {historiques.map((histo, index) => (
                                 <tr className="bg-gray-100" key={index}>
-                                    <td className="border px-2 py-2">{histo.date}</td>
-                                    <td className="border px-2 py-2">{histo.mission}</td>
-                                    <td className="border px-2 py-2">{histo.service}</td>
-                                    <td className="border px-2 py-2">{histo.immatriculation}</td>
-                                    <td className="border px-2 py-2">{histo?.chauffeur?.telephone}</td>
-                                    <td className="border px-2 py-2">{histo?.chauffeur?.nom}</td>
-                                    <td className="border px-2 py-2">{histo?.chauffeur?.cin}</td>
-                                    <td className="border px-2 py-2">{histo?.vehicule?.marque}</td>
-                                    <td className="border px-2 py-2">{histo.destination}</td>
-                                    <td className="border px-2 py-2">{histo?.ville?.NomVille}</td>
-                                    <td className="border px-2 py-2 flex justify-between">
+                                    <td className="border px-1 py-1">{histo.date}</td>
+                                    <td className="border px-1 py-1">{histo.mission}</td>
+                                    <td className="border px-1 py-1">{histo.service}</td>
+                                    <td className="border px-1 py-1">{histo.immatriculation}</td>
+                                    <td className="border px-1 py-1">{histo?.chauffeur?.telephone}</td>
+                                    <td className="border px-1 py-1">{histo?.chauffeur?.nom}</td>
+                                    <td className="border px-1 py-1">{histo?.chauffeur?.cin}</td>
+                                    <td className="border px-1 py-1">{histo?.vehicule?.marque}</td>
+                                    <td className="border px-1 py-1">{histo.destination}</td>
+                                    <td className="border px-1 py-1">{histo?.ville?.NomVille}</td>
+                                    <td className="border px-1 py-1 flex justify-between">
                                         <Link to={`/Edit1/${histo.id}`}><Button className="mr-1">Modifier</Button></Link>
                                         <Button onClick={() => deleteHistorique(histo.id)}>Supprimer</Button>
                                     </td>

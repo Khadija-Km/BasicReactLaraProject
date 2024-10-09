@@ -90,7 +90,7 @@ function CRUD1() {
             </div>
             <div className={'w-100 md:w-3/4'}>
                 <div className="p-4">
-                    <h2 className="text-2xl mb-4">editer une Mission</h2>
+                    <h2 className="text-2xl mb-4">Modifier une Mission</h2>
                     <form onSubmit={UpdateHistorique}>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nom">

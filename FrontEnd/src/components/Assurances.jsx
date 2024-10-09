@@ -42,7 +42,7 @@ return (
 </div>
 <div className={'w-100 md:w-3/4'}>
 <div className="p-4">
-<h1 className="text-3xl font-bold text-center mb-4">Liste des Assurances</h1>
+<h1 className="text-3xl font-bold mb-4">Liste des Assurances</h1>
           <Link to="/Formulaire5">
             <Button className="mb-4">Ajouter</Button>
           </Link>

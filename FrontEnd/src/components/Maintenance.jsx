@@ -1,13 +1,11 @@
 import  { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { Sidebar } from '../Layout/Sidebar';
 import { Button } from './ui/button';
 
 function Maintenance() {
     const [maintenances, setMaintenances] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         fetchMaintenances();
@@ -52,23 +50,6 @@ function Maintenance() {
                                 <Button className="mb-4">Ajouter</Button>
                             </Link>
                             <Button onClick={handlePrint} className="mb-4 ml-4">Imprimer</Button>
-                        </div>
-                        <div className="flex items-center">
-                            <input
-                                type="text"
-                                placeholder="Rechercher..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                className="border rounded py-1 px-2 mr-2"
-                            />
-                            <ReactHTMLTableToExcel
-                                id="test-table-xls-button"
-                                className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-2 rounded"
-                                table="table-to-xls"
-                                filename="liste_maintenances"
-                                sheet="liste_maintenances"
-                                buttonText="Export to Excel"
-                            />
                         </div>
                     </div>
                     <table className="table-auto border-collapse border border-gray-400">
